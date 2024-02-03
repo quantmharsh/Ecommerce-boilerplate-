@@ -1,6 +1,0 @@
-{
-  "routes": {
-    "/signup": "/users"
-  },
-  "resources": "db.json"
-}

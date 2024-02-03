@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import { Routes, Route } from "react-router-dom";
 import Welcome from './pages/Welcome';
 import LogIn from './pages/LogIn';
-import SignUp from './pages/SignUp'
+import Products from './pages/Products';
 
 function App() {
   return (
@@ -12,7 +12,8 @@ function App() {
     <Routes>
       <Route path='/' element={<Welcome/>}></Route>
       <Route path='/login' element={<LogIn/>}></Route>
-      <Route path='/signup' element={<SignUp/>}></Route>
+      <Route path='/products' element={<Products/>}></Route>
+      {/* <Route path='/signup' element={<SignUp/>}></Route> */}
       {/* <Route path='/web-internal/home' element={<Home/>}></Route> */}
     </Routes>
   );
