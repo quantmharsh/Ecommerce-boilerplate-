@@ -23,10 +23,29 @@ const Products = () => {
     setSelectedProduct(product);
   };
 
-  const handleAddToCart = (product) => {
-    console.log("Adding to cart:", product);
-    // Here, you would add the product to your cart's state or context
+  const handleAddToFavourites = async (product) => {
+    try {
+      const response = await fetch('http://localhost:3000/favourites', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          productId: product.id,
+          // Include any other product details you deem necessary
+        }),
+      });
+      if (response.ok) {
+        console.log('Product added to favourites successfully');
+        // Optionally, update UI or state to reflect the change
+      } else {
+        console.error('Failed to add product to favourites');
+      }
+    } catch (error) {
+      console.error('Error adding product to favourites:', error);
+    }
   };
+  
 
   return (
     <div className="products-container">
@@ -46,7 +65,8 @@ const Products = () => {
           <p>{selectedProduct.description}</p>
           <p>Price: ${selectedProduct.amount}</p>
           <p>Rating: {selectedProduct.rating} / 5</p>
-          <button onClick={() => handleAddToCart(selectedProduct)}>Add to Cart</button>
+          <button onClick={() => handleAddToFavourites(selectedProduct)}>Add to Favourites</button>
+
         </div>
       )}
     </div>
